@@ -14,7 +14,7 @@ const body = document.querySelector('body');
 const tiles = document.querySelector('#menu');
 
 const checkLocalStorage = () => {
-   const theme = localStorage.getItem('themeApplied');
+  const theme = localStorage.getItem('themeApplied');
   if (theme === null || theme === Theme.LIGHT) {
     localStorage.setItem('themeApplied', Theme.LIGHT)
     body.classList.add(Theme.LIGHT)
@@ -22,7 +22,7 @@ const checkLocalStorage = () => {
   } else if (theme == Theme.DARK) {
     body.classList.add(Theme.DARK)
     themeSwitcher.setAttribute('checked', true)
-  } 
+  }
 }
 
 const changeSwitcherPosition = () => {
@@ -31,17 +31,15 @@ const changeSwitcherPosition = () => {
     themeSwitcher.setAttribute('checked', true);
     localStorage.setItem('themeApplied', Theme.DARK);
     body.classList.replace(Theme.LIGHT, Theme.DARK);
-  } 
-    else {
-      themeSwitcher.removeAttribute('checked');
-      localStorage.setItem('themeApplied', Theme.LIGHT);
-      body.classList.replace(Theme.DARK, Theme.LIGHT);
-    }
+  } else {
+    themeSwitcher.removeAttribute('checked');
+    localStorage.setItem('themeApplied', Theme.LIGHT);
+    body.classList.replace(Theme.DARK, Theme.LIGHT);
   }
-  
+}
+
 checkLocalStorage();
 themeSwitcher.addEventListener('change', changeSwitcherPosition);
-
 
 for (let element of menuData) {
   let result = menu(element);
