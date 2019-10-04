@@ -1,4 +1,6 @@
 import './styles.css';
+import menu from '../src/index.hbs'
+import menuData from '../src/menu.json'
 
 const Theme = {
   LIGHT: 'light-theme',
@@ -8,6 +10,8 @@ const Theme = {
 const themeSwitcher = document.querySelector('#theme-switch-control');
 
 const body = document.querySelector('body');
+
+const tiles = document.querySelector('#menu');
 
 const checkLocalStorage = () => {
    const theme = localStorage.getItem('themeApplied');
@@ -37,3 +41,9 @@ const changeSwitcherPosition = () => {
   
 checkLocalStorage();
 themeSwitcher.addEventListener('change', changeSwitcherPosition);
+
+
+for (let element of menuData) {
+  let result = menu(element);
+  tiles.innerHTML += result;
+}
